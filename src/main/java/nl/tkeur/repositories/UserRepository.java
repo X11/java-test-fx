@@ -9,8 +9,8 @@ public class UserRepository {
 
     private Database db;
 
-    public UserRepository() {
-        this.db = Database.getInstance();
+    public UserRepository(Database db) {
+        this.db = db;
     }
 
     public User getUserFromUsername(String username) {
@@ -31,6 +31,7 @@ public class UserRepository {
             e.printStackTrace();
         }
 
+        // TODO: Throw error when user is not found
         return null;
     }
 }

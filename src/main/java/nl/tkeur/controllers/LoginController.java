@@ -5,8 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import nl.tkeur.services.UserService;
+import nl.tkeur.Router;
+
+import javax.inject.Inject;
 
 public class LoginController {
 
@@ -21,8 +23,12 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
-    public LoginController() {
-        this.userService = new UserService();
+    private Router router;
+
+    @Inject
+    public LoginController(Router router, UserService userService) {
+        this.router = router;
+        this.userService = userService;
     }
 
     public void handleLoginButtonAction(ActionEvent actionEvent) {
@@ -34,7 +40,7 @@ public class LoginController {
             return;
         }
 
-        errorLabel.setText("");
         System.out.println("Succesfully authenticated");
+        this.router.setView("overview");
     }
 }

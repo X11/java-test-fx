@@ -1,25 +1,28 @@
 package nl.tkeur;
 
+import eu.lestard.easydi.EasyDI;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.net.URL;
+import nl.tkeur.views.LoginView;
+import nl.tkeur.views.OverviewView;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        URL resource = getClass().getClassLoader().getResource("views/scenes/login.fxml");
-        Parent root = null;
-        if (resource != null) {
-            root = FXMLLoader.load(resource);
-        }
-        primaryStage.setTitle("User login");
-        primaryStage.setScene(new Scene(root, 800, 600));
-        primaryStage.show();
+    public void start(Stage primaryStage) throws Exception {
+        // Setup Depedency Injection
+        AppServiceProvider.setup();
+
+        // Setup the router
+        Router router = AppServiceProvider.getInstance(Router.class);
+        router.setStage(primaryStage);
+
+        // Add views
+        router.addView("login", new LoginView());
+        router.addView("overview", new OverviewView());
+
+        // Set the default view
+        router.setView("login");
     }
 
 

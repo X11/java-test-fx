@@ -4,12 +4,15 @@ import nl.tkeur.models.User;
 import nl.tkeur.repositories.UserRepository;
 import org.mindrot.jbcrypt.BCrypt;
 
+import javax.inject.Singleton;
+
+@Singleton
 public class UserService {
 
     private UserRepository userRepository;
 
-    public UserService() {
-        this.userRepository = new UserRepository();
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     /**
@@ -21,5 +24,6 @@ public class UserService {
         User user = this.userRepository.getUserFromUsername(username);
 
         return BCrypt.checkpw(password, user.getPassword());
+
     }
 }
