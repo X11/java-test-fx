@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import nl.tkeur.views.ViewInterface;
 
 import javax.inject.Singleton;
 import java.io.IOException;
@@ -12,13 +11,11 @@ import java.net.URL;
 import java.util.HashMap;
 
 @Singleton
-public class Router {
+class Router {
     private Stage stage;
     private HashMap<String, ViewInterface> views;
-    private InstanceProvider instanceProvider;
 
-    public Router(InstanceProvider instanceProvider) {
-        this.instanceProvider = instanceProvider;
+    public Router() {
         this.views = new HashMap<>();
     }
 
@@ -28,7 +25,7 @@ public class Router {
      * @param name Name of the view
      * @param view The view class
      */
-    public void addView(String name, ViewInterface view) {
+    void addView(String name, ViewInterface view) {
         this.views.put(name, view);
     }
 
@@ -37,7 +34,7 @@ public class Router {
      *
      * @param stage Stage
      */
-    public void setStage(Stage stage) {
+    void setStage(Stage stage) {
         this.stage = stage;
     }
 
@@ -46,7 +43,7 @@ public class Router {
      *
      * @param name The name of the view to load
      */
-    public void setView(String name) {
+    void setView(String name) {
         ViewInterface view = this.views.get(name);
         Parent root = this.getParentRoot(view.getFxmlPath());
         this.stage.setTitle(view.getTitle());
@@ -68,7 +65,7 @@ public class Router {
 
             final FXMLLoader loader = new FXMLLoader();
             loader.setLocation(url);
-            loader.setControllerFactory(controllerClass -> this.instanceProvider.getInstance(controllerClass));
+            loader.setControllerFactory(InstanceProvider::getInstance);
 
             return (Parent) loader.load();
         } catch (IOException e) {

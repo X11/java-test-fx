@@ -1,6 +1,4 @@
-package nl.tkeur.models;
-
-import nl.tkeur.ResultSetHydrator;
+package nl.tkeur;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,21 +9,23 @@ public class User implements ResultSetHydrator {
     private String username;
     private String password;
 
-    public int getId() {
+    int getId() {
         return id;
     }
 
-    public String getUsername() {
+    String getUsername() {
         return username;
     }
-    public void setUsername(String username) {
+
+    void setUsername(String username) {
         this.username = username;
     }
 
-    public String getPassword() {
+    String getPassword() {
         return password;
     }
-    public void setPassword(String password) {
+
+    void setPassword(String password) {
         this.password = password;
     }
 

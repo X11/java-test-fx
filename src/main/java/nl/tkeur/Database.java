@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 @Singleton
-public class Database {
+class Database {
 
     private static final String DB_URL = "jdbc:mysql://localhost/testfx";
     private static final String DB_USER = "root";
@@ -30,7 +30,7 @@ public class Database {
     /**
      * @return Connection
      */
-    public Connection getConnection() {
+    Connection getConnection() {
         return connection;
     }
 }

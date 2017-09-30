@@ -1,6 +1,6 @@
-package nl.tkeur.views;
+package nl.tkeur;
 
-public interface ViewInterface {
+interface ViewInterface {
 
     /**
      * Get the title for the view

@@ -1,4 +1,4 @@
-package nl.tkeur.views;
+package nl.tkeur;
 
 public class OverviewView implements ViewInterface {
 

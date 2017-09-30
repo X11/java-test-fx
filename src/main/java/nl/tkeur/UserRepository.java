@@ -1,11 +1,11 @@
-package nl.tkeur.repositories;
+package nl.tkeur;
 
-import nl.tkeur.Database;
-import nl.tkeur.models.User;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import java.sql.*;
-
-public class UserRepository {
+class UserRepository {
 
     private Database db;
 
@@ -13,7 +13,7 @@ public class UserRepository {
         this.db = db;
     }
 
-    public User getUserFromUsername(String username) {
+    User getUserFromUsername(String username) {
         Connection conn = this.db.getConnection();
 
         try {
