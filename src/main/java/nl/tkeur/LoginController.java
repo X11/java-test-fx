@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 public class LoginController {
 
-    private final UserService userService;
+    private final AuthenticationService authenticationService;
 
     @FXML
     private Label errorLabel;
@@ -24,21 +24,26 @@ public class LoginController {
     private Router router;
 
     @Inject
-    public LoginController(Router router, UserService userService) {
+    public LoginController(Router router, AuthenticationService authenticationService) {
         this.router = router;
-        this.userService = userService;
+        this.authenticationService = authenticationService;
     }
 
     public void handleLoginButtonAction(ActionEvent actionEvent) {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (! this.userService.authenticate(username, password)) {
+        if (! this.authenticationService.login(username, password)) {
             errorLabel.setText("Username and password combination do not match!");
             return;
         }
 
         System.out.println("Succesfully authenticated");
-        this.router.setView("overview");
+
+        try {
+            this.router.setView("default/overview");
+        } catch (RouterViewNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,6 +1,10 @@
 package nl.tkeur;
 
 public class LoginView implements ViewInterface {
+    @Override
+    public String getName() {
+        return "login";
+    }
 
     @Override
     public String getTitle() {

@@ -2,7 +2,11 @@
 
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.tkeur.OverviewController">
-    <Text text="hoi"/>
-</VBox>
+
+<?import nl.tkeur.DefaultLayout?>
+<DefaultLayout fx:controller="nl.tkeur.OverviewController" xmlns="http://javafx.com/javafx/8.0.111"
+               xmlns:fx="http://javafx.com/fxml/1">
+    <VBox alignment="CENTER">
+        <Text text="hoi"/>
+    </VBox>
+</DefaultLayout>

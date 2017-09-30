@@ -15,8 +15,8 @@ public class Main extends Application {
         router.setStage(primaryStage);
 
         // Add views
-        router.addView("login", new LoginView());
-        router.addView("overview", new OverviewView());
+        router.addView(new LoginView());
+        router.addView(new OverviewView());
 
         // Set the default view
         router.setView("login");

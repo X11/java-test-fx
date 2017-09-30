@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-class UserRepository {
+public class UserRepository {
 
     private Database db;
 
@@ -13,7 +13,7 @@ class UserRepository {
         this.db = db;
     }
 
-    User getUserFromUsername(String username) {
+    User getUserFromUsername(String username) throws UserNotFoundException {
         Connection conn = this.db.getConnection();
 
         try {
@@ -31,7 +31,6 @@ class UserRepository {
             e.printStackTrace();
         }
 
-        // TODO: Throw error when user is not found
-        return null;
+        throw new UserNotFoundException(username);
     }
 }

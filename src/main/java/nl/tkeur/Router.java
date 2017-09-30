@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.HashMap;
 
 @Singleton
-class Router {
+public class Router {
     private Stage stage;
     private HashMap<String, ViewInterface> views;
 
@@ -25,8 +25,18 @@ class Router {
      * @param name Name of the view
      * @param view The view class
      */
-    void addView(String name, ViewInterface view) {
-        this.views.put(name, view);
+    void addView(ViewInterface view) {
+        this.views.put(view.getName(), view);
+    }
+
+    /**
+     * Get a view from the router
+     *
+     * @param name Name of the view
+     * @return
+     */
+    ViewInterface getView(String name) {
+        return this.views.get(name);
     }
 
     /**
@@ -43,9 +53,13 @@ class Router {
      *
      * @param name The name of the view to load
      */
-    void setView(String name) {
+    void setView(String name) throws RouterViewNotFoundException {
+        if (! this.views.containsKey(name)) {
+            throw new RouterViewNotFoundException(name);
+        }
+
         ViewInterface view = this.views.get(name);
-        Parent root = this.getParentRoot(view.getFxmlPath());
+        Parent root = this.getFxmlResource(view.getFxmlPath());
         this.stage.setTitle(view.getTitle());
         this.stage.setScene(new Scene(root, 800, 600));
         this.stage.show();
@@ -58,9 +72,8 @@ class Router {
      *
      * @return The parent
      */
-    private Parent getParentRoot(String path) {
+    private Parent getFxmlResource(String path) {
         try {
-
             URL url = getClass().getClassLoader().getResource(path);
 
             final FXMLLoader loader = new FXMLLoader();
