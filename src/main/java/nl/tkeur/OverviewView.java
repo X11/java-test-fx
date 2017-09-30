@@ -13,6 +13,6 @@ public class OverviewView implements ViewInterface {
 
     @Override
     public String getFxmlPath() {
-        return "views/scenes/overview.fxml";
+        return "views/wrappers/default_overview.fxml";
     }
 }

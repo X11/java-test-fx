@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.text.Text?>
 
-<?import nl.tkeur.DefaultLayout?>
-<DefaultLayout fx:controller="nl.tkeur.OverviewController" xmlns="http://javafx.com/javafx/8.0.111"
-               xmlns:fx="http://javafx.com/fxml/1">
-    <VBox alignment="CENTER">
-        <Text text="hoi"/>
-    </VBox>
-</DefaultLayout>
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.tkeur.OverviewController">
+    <Text text="test" />
+</ScrollPane>
