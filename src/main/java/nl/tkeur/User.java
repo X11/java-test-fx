@@ -3,11 +3,17 @@ package nl.tkeur;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class User implements ResultSetHydrator {
+public class User {
 
     private int id;
     private String username;
     private String password;
+
+    User(int id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
 
     int getId() {
         return id;
@@ -27,17 +33,5 @@ public class User implements ResultSetHydrator {
 
     void setPassword(String password) {
         this.password = password;
-    }
-
-    public boolean hydrate(ResultSet rs) {
-        try {
-            this.id = rs.getInt("id");
-            this.username = rs.getString("username");
-            this.password = rs.getString("password");
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 }

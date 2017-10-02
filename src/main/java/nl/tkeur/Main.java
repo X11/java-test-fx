@@ -15,11 +15,15 @@ public class Main extends Application {
         router.setStage(primaryStage);
 
         // Add views
-        router.addView(new LoginView());
-        router.addView(new OverviewView());
+        router.addView(InstanceProvider.getInstance(LoginView.class));
+        router.addView(InstanceProvider.getInstance(OverviewView.class));
 
         // Set the default view
-        router.setView("login");
+        try {
+            router.setView("login");
+        } catch (RouterException e) {
+            e.printStackTrace();
+        }
     }
 
 

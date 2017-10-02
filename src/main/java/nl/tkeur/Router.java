@@ -53,12 +53,16 @@ public class Router {
      *
      * @param name The name of the view to load
      */
-    void setView(String name) throws RouterViewNotFoundException {
+    void setView(String name) throws RouterViewNotFoundException, RouterBeforeViewEnterException {
         if (! this.views.containsKey(name)) {
             throw new RouterViewNotFoundException(name);
         }
 
         ViewInterface view = this.views.get(name);
+        if (! view.beforeViewEnter()) {
+            throw new RouterBeforeViewEnterException(view);
+        }
+
         Parent root = this.getFxmlResource(view.getFxmlPath());
         this.stage.setTitle(view.getTitle());
         this.stage.setScene(new Scene(root, 800, 600));

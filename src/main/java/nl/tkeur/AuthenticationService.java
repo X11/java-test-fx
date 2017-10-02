@@ -49,4 +49,8 @@ public class AuthenticationService {
     private void setAuthenticatedUser(User authenticatedUser) {
         this.authenticatedUser = authenticatedUser;
     }
+
+    public boolean isAuthenticated() {
+        return this.getAuthenticatedUser() != null;
+    }
 }

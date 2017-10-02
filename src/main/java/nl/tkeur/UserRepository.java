@@ -20,13 +20,14 @@ public class UserRepository {
             PreparedStatement stmt = conn.prepareStatement("SELECT * from users where username = ? LIMIT 1");
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()) {
-                User user = new User();
-                if (user.hydrate(rs)) {
-                    return user;
-                }
-            }
+            rs.next();
+
+            User user = new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"));
+
+            rs.close();
             stmt.close();
+
+            return user;
         } catch (SQLException e) {
             e.printStackTrace();
         }

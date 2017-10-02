@@ -1,6 +1,6 @@
 package nl.tkeur;
 
-public class RouterViewNotFoundException extends Exception {
+public class RouterViewNotFoundException extends RouterException {
     public RouterViewNotFoundException(String name) {
         super(name);
     }

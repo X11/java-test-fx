@@ -42,7 +42,7 @@ public class LoginController {
 
         try {
             this.router.setView("default/overview");
-        } catch (RouterViewNotFoundException e) {
+        } catch (RouterException e) {
             e.printStackTrace();
         }
     }

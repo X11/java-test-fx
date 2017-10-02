@@ -32,7 +32,7 @@ public class DefaultController {
 
         try {
             this.router.setView("login");
-        } catch (RouterViewNotFoundException e) {
+        } catch (RouterException e) {
             e.printStackTrace();
         }
     }

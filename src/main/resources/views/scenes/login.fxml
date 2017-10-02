@@ -14,7 +14,7 @@
    <children>
       <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" spacing="10.0">
          <children>
-            <HBox alignment="CENTER">
+            <VBox alignment="CENTER">
                <children>
                   <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -26,7 +26,7 @@
                   </ImageView>
                   <Label fx:id="errorLabel" textFill="RED" wrapText="true" />
                </children>
-            </HBox>
+            </VBox>
             <Label style="-fx-font-weight: bold;" text="Username" VBox.vgrow="ALWAYS" />
             <TextField fx:id="usernameField" />
             <Label layoutX="20.0" layoutY="20.0" style="-fx-font-weight: bold;" text="Password" />
