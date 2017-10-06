@@ -2,9 +2,9 @@ package nl.tkeur;
 
 public class OverviewView implements ViewInterface {
 
-    private AuthenticationService authenticationService;
+    private AuthenticationServiceInterface authenticationService;
 
-    public OverviewView(AuthenticationService authenticationService) {
+    public OverviewView(AuthenticationServiceInterface authenticationService) {
         this.authenticationService = authenticationService;
     }
 

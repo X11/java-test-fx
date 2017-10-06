@@ -5,7 +5,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import javax.inject.Singleton;
 
 @Singleton
-public class AuthenticationService {
+public class AuthenticationService implements AuthenticationServiceInterface {
 
     private UserRepository userRepository;
     private User authenticatedUser;
@@ -23,7 +23,7 @@ public class AuthenticationService {
      *
      * @return boolean
      */
-    boolean login(String username, String password) {
+    public boolean login(String username, String password) {
         try {
             User user = this.userRepository.getUserFromUsername(username);
             if (BCrypt.checkpw(password, user.getPassword())) {
@@ -37,7 +37,7 @@ public class AuthenticationService {
         return false;
     }
 
-    boolean logout() {
+    public boolean logout() {
         this.setAuthenticatedUser(null);
         return true;
     }

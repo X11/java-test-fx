@@ -12,6 +12,10 @@ class InstanceProvider {
 
     private static void register() {
         edi.bindProvider(Database.class, Database::new);
+
+        edi.bindInterface(UserRepositoryInterface.class, UserRepository.class);
+        edi.bindInterface(AuthenticationServiceInterface.class, AuthenticationService.class);
+        edi.bindInterface(DatabaseInterface.class, Database.class);
     }
 
     static <T> T getInstance(Class<T> requestedType) {

@@ -5,15 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserRepository {
+public class UserRepository implements UserRepositoryInterface {
 
-    private Database db;
+    private DatabaseInterface db;
 
-    public UserRepository(Database db) {
+    public UserRepository(DatabaseInterface db) {
         this.db = db;
     }
 
-    User getUserFromUsername(String username) throws UserNotFoundException {
+    public User getUserFromUsername(String username) throws UserNotFoundException {
         Connection conn = this.db.getConnection();
 
         try {

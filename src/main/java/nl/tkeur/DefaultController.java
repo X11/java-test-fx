@@ -8,11 +8,11 @@ import javax.inject.Inject;
 
 public class DefaultController {
 
-    private AuthenticationService authenticationService;
+    private AuthenticationServiceInterface authenticationService;
     private Router router;
 
     @Inject
-    public DefaultController(AuthenticationService authenticationService, Router router) {
+    public DefaultController(AuthenticationServiceInterface authenticationService, Router router) {
         this.authenticationService = authenticationService;
         this.router = router;
     }
