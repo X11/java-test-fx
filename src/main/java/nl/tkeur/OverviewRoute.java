@@ -1,10 +1,10 @@
 package nl.tkeur;
 
-public class OverviewView implements ViewInterface {
+public class OverviewRoute implements Router.Route {
 
     private AuthenticationServiceInterface authenticationService;
 
-    public OverviewView(AuthenticationServiceInterface authenticationService) {
+    public OverviewRoute(AuthenticationServiceInterface authenticationService) {
         this.authenticationService = authenticationService;
     }
 

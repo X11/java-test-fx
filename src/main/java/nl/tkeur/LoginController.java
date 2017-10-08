@@ -41,7 +41,7 @@ public class LoginController {
         System.out.println("Succesfully authenticated");
 
         try {
-            this.router.setView("default/overview");
+            this.router.setRoute("default/overview");
         } catch (RouterException e) {
             e.printStackTrace();
         }

@@ -31,7 +31,7 @@ public class DefaultController {
         this.authenticationService.logout();
 
         try {
-            this.router.setView("login");
+            this.router.setRoute("login");
         } catch (RouterException e) {
             e.printStackTrace();
         }

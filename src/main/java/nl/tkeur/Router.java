@@ -13,7 +13,7 @@ import java.util.HashMap;
 @Singleton
 public class Router {
     private Stage stage;
-    private HashMap<String, ViewInterface> views;
+    private HashMap<String, Route> views;
 
     public Router() {
         this.views = new HashMap<>();
@@ -22,10 +22,9 @@ public class Router {
     /**
      * Add a new view to the router
      *
-     * @param name Name of the view
      * @param view The view class
      */
-    void addView(ViewInterface view) {
+    void addRoute(Route view) {
         this.views.put(view.getName(), view);
     }
 
@@ -35,7 +34,7 @@ public class Router {
      * @param name Name of the view
      * @return
      */
-    ViewInterface getView(String name) {
+    Route getRoute(String name) {
         return this.views.get(name);
     }
 
@@ -53,12 +52,12 @@ public class Router {
      *
      * @param name The name of the view to load
      */
-    void setView(String name) throws RouterViewNotFoundException, RouterBeforeViewEnterException {
+    void setRoute(String name) throws RouterViewNotFoundException, RouterBeforeViewEnterException {
         if (! this.views.containsKey(name)) {
             throw new RouterViewNotFoundException(name);
         }
 
-        ViewInterface view = this.views.get(name);
+        Route view = this.views.get(name);
         if (! view.beforeViewEnter()) {
             throw new RouterBeforeViewEnterException(view);
         }
@@ -89,5 +88,38 @@ public class Router {
             e.printStackTrace();
         }
         return null;
+    }
+
+    interface Route {
+        /**
+         * Get the views name
+         *
+         * @return
+         */
+        String getName();
+
+        /**
+         * Get the title for the view
+         *
+         * @return String
+         */
+        String getTitle();
+
+        /**
+         * Get the path for the fxml file
+         *
+         * @return String
+         */
+        String getFxmlPath();
+
+        /**
+         * Hook for before the router to a view. This can be used to check whether a user is authenticated or not.
+         *
+         * @return
+         */
+        default boolean beforeViewEnter() {
+            return true;
+        }
+
     }
 }

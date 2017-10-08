@@ -1,6 +1,6 @@
 package nl.tkeur;
 
-public class LoginView implements ViewInterface {
+public class LoginRoute implements Router.Route {
     @Override
     public String getName() {
         return "login";
