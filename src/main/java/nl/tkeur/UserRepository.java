@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserRepository implements UserRepositoryInterface {
+public class UserRepository {
 
-    private DatabaseInterface db;
+    private Database db;
 
-    public UserRepository(DatabaseInterface db) {
+    public UserRepository(Database db) {
         this.db = db;
     }
 

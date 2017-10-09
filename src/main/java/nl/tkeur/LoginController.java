@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 public class LoginController {
 
-    private final AuthenticationServiceInterface authenticationService;
+    private final AuthenticationService authenticationService;
 
     @FXML
     private Label errorLabel;
@@ -24,7 +24,7 @@ public class LoginController {
     private Router router;
 
     @Inject
-    public LoginController(Router router, AuthenticationServiceInterface authenticationService) {
+    public LoginController(Router router, AuthenticationService authenticationService) {
         this.router = router;
         this.authenticationService = authenticationService;
     }

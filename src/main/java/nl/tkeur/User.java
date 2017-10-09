@@ -1,8 +1,5 @@
 package nl.tkeur;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 public class User {
 
     private int id;

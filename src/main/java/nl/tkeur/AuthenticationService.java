@@ -5,7 +5,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import javax.inject.Singleton;
 
 @Singleton
-public class AuthenticationService implements AuthenticationServiceInterface {
+public class AuthenticationService {
 
     private UserRepository userRepository;
     private User authenticatedUser;
